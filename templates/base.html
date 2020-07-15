@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css"/>
+    <title>{% block page-title %}{% endblock %}</title>
+</head>
+    <body>
+    {% if user.is_authenticated %}
+        <button><a href="{% url 'callout' %}">Callout History</a></button>
+        <button><a href="{% url 'callout_create' %}">Callout Form</a></button>
+        <button><a href="{% url 'permits_open' %}">Open Permits</a></button>
+        <button><a href="{% url 'permits_closed' %}">Closed Permits</a></button>
+        <button><a href="{% url 'general_permit_create' %}">Create General Permit</a></button>
+        <button><a href="{% url 'hotworks_permit_create' %}">Create Hot Works Permit</a></button>
+        <button><a href="{% url 'electrical_permit_create' %}">Create Electrical Permit</a></button>
+        <button><a href="{% url 'profile' %}">Profile</a></button>
+        <button><a href="{% url 'logout' %}">Logout</a></button></button>
+    {% else %}
+    <button><a href="{% url 'login' %}">Login</a></button></button>
+    <button><a href="{% url 'register' %}">Register</a></button></button>
+    {% endif %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

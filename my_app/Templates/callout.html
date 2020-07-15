@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Callout list</p>
+{% for callout in object_list %}
+    <p>{{ callout.name }} {{ callout.facility }}
+        <button><a href="{% url 'callout_detail' callout.id %}">Detail</a></button>
+    </p>
+    {% empty %}
+        <p>Nothing has been posted yet. Be the first</p>
+{% endfor %}
+{% endblock %}

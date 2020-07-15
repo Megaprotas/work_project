@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block page-title %}{{ user }}{% endblock %}
+
+{% block content %}
+            <p><img class="profile-img" src="{{ user.profile.photo.url }}"></p>
+            <p>User: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>First name {{ user.profile.first_name }}</p>
+            <p>Family name {{ user.profile.surname }}</p>
+            <p>Position {{ user.profile.position }}</p>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <button type="submit">Update Profile</button>
+            </form>
+
+{% endblock %}

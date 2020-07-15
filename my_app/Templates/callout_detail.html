@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Detail view</p>
+    <p>{{ object.engineer.profile.first_name }}</p>
+    <p>{{ object.engineer.profile.surname }}</p>
+    <p>{{ object.engineer.profile.position }}</p>
+    <p>{{ object.name }}</p>
+    <p>{{ object.facility }}</p>
+    <p>{{ object.callout_date|date:'d/m/Y' }}</p>
+    <p>{{ object.notification_time|time:'H:i' }}</p>
+    <p>{{ object.arrival_time|time:'H:i' }}</p>
+    <p>{{ object.completion_time|time:'H:i' }}</p>
+    <p>{{ object.mileage }}</p>
+    {% if object.ref_number == 0 %}
+        <p>No reference</p>
+    {% else %}
+        <p>{{ object.ref_number }}</p>
+    {% endif %}
+    <p>{{ object.findings|safe|linebreaks }}</p>
+    <p>{{ object.actions_taken|safe|linebreaks }}</p>
+    <p>{{ object.resolved_status }}</p>
+    <p>{{ object.views }}</p>
+    <button><a href="{% url 'callout_edit' object.id %}">Edit</a></button>
+    <button><a href="{% url 'callout_confirm_delete' object.id %}">Delete</a></button>
+{% endblock %}

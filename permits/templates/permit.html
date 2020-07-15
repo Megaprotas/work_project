@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>General Works Permit list</p>
+    {% for permit1 in general %}
+        <p>{{ permit1.contractor }}</p>
+        <p>{{ permit1.safety_precautions }}</p>
+        <button><a href="{% url 'general_detail_view' permit1.id %}">Detail</a></button>
+            {% empty %}
+                <p>Nothing to display</p>
+    {% endfor %}
+    <hr>
+    <p>How Works Permit list</p>
+    {% for permit2 in hotworks %}
+        <p>{{ permit2.contractor }}</p>
+        <button><a href="{% url 'hotworks_detail_view' permit2.id %}">Detail</a></button>
+        {% empty %}
+            <p>Nothing to display</p>
+    {% endfor %}
+    <hr>
+    <p>Electrical Works Permit list</p>
+    {% for permit3 in electrical %}
+        <p>{{ permit3.contractor }}</p>
+        <button><a href="{% url 'electrical_detail_view' permit3.id %}">Detail</a></button>
+        {% empty %}
+            <p>Nothing to display</p>
+    {% endfor %}
+{% endblock %}
